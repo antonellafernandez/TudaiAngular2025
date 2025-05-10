@@ -1,20 +1,32 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlantListComponent } from './plant-list/plant-list.component';
 
+import { FormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
+import { CartComponent } from './cart/cart.component';
+import { PlantsComponent } from './plants/plants.component';
+import { ModelComponent } from './model/model.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    PlantListComponent
+    PlantListComponent,
+    AboutComponent,
+    CartComponent,
+    PlantsComponent,
+    ModelComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

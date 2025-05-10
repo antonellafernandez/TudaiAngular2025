@@ -1,5 +1,42 @@
-<h1>Plant List</h1>
+<h1>Plants</h1>
 
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @for (plant of plants; track plant.name) {
+        <div class="col">
+            <div [ngClass]="{'clearance': plant.clearance}" class="card h-100">
+                <img class="card-img-top" [src]="plant.image" [alt]="plant.name">
+                <div class="card-body">
+                    <h5 class="card-title text-truncate">{{plant.name}}</h5>
+                    <p>{{plant.type}}</p>
+                    <h4 class="card-text">{{plant.price | currency}}</h4>
+                    
+                    @if (plant.stock > 0) {
+                        <p>{{plant.stock}} Available</p>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-primary btn-sm mx-1" (click)="downQuantity(plant)">-</button>
+
+                            <input 
+                                type="text"     
+                                [(ngModel)]="plant.quantity"
+                                (keyup)="changeQuantity($event, plant)"
+                                class="form-control form-control-sm text-center quantity-input"
+                            >
+
+                             <button class="btn btn-primary btn-sm mx-1" (click)="upQuantity(plant)">+</button>
+                        </div>
+                    } @else {
+                        <span class="badge text-bg-warning">Sold Out</span>
+                    }
+                </div>
+            </div>
+        </div>
+    } @empty {
+        <p>There are no plants to show.</p>
+    }
+</div>
+
+<!--
 <table>
     <thead>
         <tr>
@@ -8,6 +45,7 @@
             <th>Type</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Buy</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +57,17 @@
                 <td>{{plant.price | currency}}</td>
                 @if (plant.stock > 0) {
                     <td>{{plant.stock}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" (click)="downQuantity(plant)">-</button>
+
+                        <input 
+                            type="text"     
+                            [(ngModel)]="plant.quantity"
+                            (keyup)="changeQuantity($event, plant)"
+                        >
+
+                        <button class="btn btn-primary btn-sm" (click)="upQuantity(plant)">+</button>
+                    </td>
                 } @else {
                     <td><span class="badge text-bg-warning">Sold Out</span></td>
                 }
@@ -30,3 +79,4 @@
         }
     </tbody>
 </table>
+-->
