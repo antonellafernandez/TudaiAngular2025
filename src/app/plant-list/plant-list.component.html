@@ -14,7 +14,7 @@
                         <p>{{plant.stock}} Available</p>
 
                         <div class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-primary btn-sm mx-1" (click)="downQuantity(plant)">-</button>
+                            <button class="btn btn-sm mx-1" (click)="downQuantity(plant)">-</button>
 
                             <input 
                                 type="text"     
@@ -23,7 +23,7 @@
                                 class="form-control form-control-sm text-center quantity-input"
                             >
 
-                             <button class="btn btn-primary btn-sm mx-1" (click)="upQuantity(plant)">+</button>
+                             <button class="btn btn-sm mx-1" (click)="upQuantity(plant)">+</button>
                         </div>
                     } @else {
                         <span class="badge text-bg-warning">Sold Out</span>
