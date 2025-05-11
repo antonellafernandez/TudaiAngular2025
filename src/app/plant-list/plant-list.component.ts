@@ -40,7 +40,7 @@ export class PlantListComponent {
       name:"Monstera siltepecana",
       type: "Monstera",
       price: 12.99,
-      stock: 10,
+      stock: 20,
       image: "/assets/img/siltepecana.webp",
       clearance: true,
       quantity: 0
@@ -49,7 +49,7 @@ export class PlantListComponent {
       name:"Monstera deliciosa var. borsigiana",
       type: "Monstera",
       price: 34.99,
-      stock: 10,
+      stock: 20,
       image: "/assets/img/borsigiana.webp",
       clearance: false,
       quantity: 0
@@ -58,7 +58,7 @@ export class PlantListComponent {
       name:"Monstera acacoyaguensis",
       type: "Monstera",
       price: 24.99,
-      stock: 10,
+      stock: 20,
       image: "/assets/img/acacoyaguensis.webp",
       clearance: false,
       quantity: 0
@@ -93,21 +93,5 @@ export class PlantListComponent {
   ];
 
   constructor () { }
-
-  downQuantity(plant: Plant): void {
-    if (plant.quantity > 0) {
-      plant.quantity--;
-    }
-  }
-
-  upQuantity(plant: Plant): void {
-    if (plant.quantity < plant.stock) {
-      plant.quantity++;
-    }
-  }
-
-  changeQuantity(event: KeyboardEvent, plant: Plant): void {
-    console.log(event.key);
-  }
 
 }

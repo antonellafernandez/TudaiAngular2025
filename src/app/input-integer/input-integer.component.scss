@@ -1,0 +1,21 @@
+button {
+    background-color: #a31151;
+    color: white;
+}
+
+button:hover {
+    background-color: #a31151;
+    color: white;
+}
+
+/* No arrows for Chrome, Safari, Edge, Opera */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* No arrows for Firefox */
+.no-spinner {
+  -moz-appearance: textfield;
+}
