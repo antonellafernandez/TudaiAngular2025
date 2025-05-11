@@ -1,7 +1,12 @@
-table {
-    width: 100%;
+.card {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+  transition: box-shadow 0.3s ease-in-out; /* Transición suave */
+}
+
+.card:hover {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al hacer hover */
 }
 
 .clearance {
-    background-color:  #80cc35;
+  background: linear-gradient(0deg, white, #80cc35);
 }

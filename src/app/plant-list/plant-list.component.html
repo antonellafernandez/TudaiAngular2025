@@ -4,6 +4,18 @@
     @for (plant of plants; track plant.name) {
         <div class="col">
             <div [ngClass]="{'clearance': plant.clearance}" class="card h-100">
+                <!-- Badge "Special Offer" -->
+                @if (plant.clearance) {
+                    <span class="badge text-bg-info position-absolute top-0 start-0 m-2"
+                            style="transform: translateX(1rem);">
+                        Special Offer!
+                    </span>
+
+                    <img src="/assets/icon/carnivorous-plant.png" alt="Offer"
+                        class="position-absolute top-0 start-0"
+                        style="width: 4rem; height: 4rem; transform: rotate(-15deg) translate(-30%, -30%); z-index: 10;">
+                }
+
                 <img class="card-img-top" [src]="plant.image" [alt]="plant.name">
                 <div class="card-body">
                     <h5 class="card-title text-truncate">{{plant.name}}</h5>
@@ -13,7 +25,10 @@
                     @if (plant.stock > 0) {
                         <p>{{plant.stock}} Available</p>
 
-                        <app-input-integer [(quantity)]="plant.quantity" [max]="plant.stock"></app-input-integer>
+                        <div class="d-flex align-items-center gap-2">
+                            <app-input-integer [(quantity)]="plant.quantity" [max]="plant.stock"></app-input-integer>
+                            <button class="btn btn-success btn-sm" (click)="addToCart(plant)">Buy</button>
+                        </div>
                     } @else {
                         <span class="badge text-bg-warning">Sold Out</span>
                     }
@@ -24,48 +39,3 @@
         <p>There are no plants to show.</p>
     }
 </div>
-
-<!--
-<table>
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Buy</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (plant of plants; track plant.name) {
-            <tr [ngClass]="{'clearance': plant.clearance}">
-                <td><img width="150" class="img-thumbnail" [src]="plant.image" [alt]="plant.name"></td>
-                <td>{{plant.name}}</td>
-                <td>{{plant.type}}</td>
-                <td>{{plant.price | currency}}</td>
-                @if (plant.stock > 0) {
-                    <td>{{plant.stock}}</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" (click)="downQuantity(plant)">-</button>
-
-                        <input 
-                            type="text"     
-                            [(ngModel)]="plant.quantity"
-                            (keyup)="changeQuantity($event, plant)"
-                        >
-
-                        <button class="btn btn-primary btn-sm" (click)="upQuantity(plant)">+</button>
-                    </td>
-                } @else {
-                    <td><span class="badge text-bg-warning">Sold Out</span></td>
-                }
-            </tr>
-        } @empty {
-            <tr>
-                <td colspan="5">There are no plants to show.</td>
-            </tr>
-        }
-    </tbody>
-</table>
--->

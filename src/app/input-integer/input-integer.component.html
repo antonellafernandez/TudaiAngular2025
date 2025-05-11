@@ -1,12 +1,13 @@
-<div class="d-flex justify-content-center align-items-center">
-    <button class="btn btn-sm mx-1" (click)="downQuantity()">-</button>
+<div class="d-flex align-items-stretch">
+  <button class="btn btn-sm rounded-0 rounded-start" (click)="downQuantity()">-</button>
 
-    <input 
+  <input 
         type="number"     
         [(ngModel)]="quantity"
         (change)="changeQuantity($event)"
-        class="form-control form-control-sm text-center quantity-input no-spinner"
+        class="form-control form-control-sm text-center no-spinner w-50 rounded-0"
+        style="border-left: 0; border-right: 0;"
     >
 
-    <button class="btn btn-sm mx-1" (click)="upQuantity()">+</button>
+  <button class="btn btn-sm rounded-0 rounded-end" (click)="upQuantity()">+</button>
 </div>
