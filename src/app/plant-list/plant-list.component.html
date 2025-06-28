@@ -17,7 +17,7 @@
                 }
 
                 <img class="card-img-top" [src]="plant.image" [alt]="plant.name">
-                <div class="card-body">
+                <div class="card-body d-flex flex-column gap-2">
                     <h5 class="card-title text-truncate">{{plant.name}}</h5>
                     <p>{{plant.type}}</p>
                     <h4 class="card-text">{{plant.price | currency}}</h4>
@@ -32,6 +32,8 @@
                     } @else {
                         <span class="badge text-bg-warning">Sold Out</span>
                     }
+
+                    <button class="btn btn-danger btn-sm mt-auto" (click)="delete(plant)">Delete</button>
                 </div>
             </div>
         </div>

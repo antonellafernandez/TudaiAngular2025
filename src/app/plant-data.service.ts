@@ -19,4 +19,8 @@ export class PlantDataService {
                 tap((plants: Plant[]) => plants.forEach(plant => plant.quantity = 0))
               ); 
   }
+
+  public deletePlant(id: string): Observable<any> {
+  return this.http.delete(`${URL}/${id}`);
+  }
 }

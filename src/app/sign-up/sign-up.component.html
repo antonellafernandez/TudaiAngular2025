@@ -1,0 +1,50 @@
+<form [formGroup]="formSignUp" (submit)="onSubmit()">
+  <div class="control" [class.invalid]="formSignUp.get('username')?.invalid">
+    <label for="username">User</label>
+    <input id="username" type="text" formControlName="username"/>
+    <div class="error-message">
+      <p *ngIf="formSignUp.get('username')?.hasError('required')">Password required</p>
+    </div>
+  </div>
+
+  <div class="control" [class.invalid]="formSignUp.get('email')?.invalid">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+    <div class="error-message">
+      <p *ngIf="formSignUp.get('email')?.hasError('required')">Email required</p>
+      <p *ngIf="formSignUp.get('email')?.hasError('email')">Invalid format</p>
+    </div>
+  </div>
+
+  <div class="control" [class.invalid]="formSignUp.get('password')?.invalid">
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password" />
+    <div class="error-message">
+      <p *ngIf="formSignUp.get('password')?.hasError('required')">Password required</p>
+      <p *ngIf="formSignUp.get('password')?.hasError('minlength')">Password must have 6 characters minimum</p>
+    </div>
+  </div>
+
+  <div class="control">
+    <label for="confirmPassword">Confirm Password</label>
+    <input id="confirmPassword" type="password" formControlName="confirmPassword"/>
+    <div class="error-message">
+      <p *ngIf="formSignUp.hasError('passwordMismatch')">Passwords don't match</p>
+    </div>
+  </div>
+
+  <button [disabled]="formSignUp.invalid" type="submit" class="btn btn-primary">Register</button>
+</form>
+
+
+<section class="mt-5">
+  <h5>Prueba two-way-data binding del form reactivo</h5>
+  <pre>{{ formSignUp.value | json }}</pre>
+
+  <pre>
+    form status: {{ formSignUp.status }}
+    form valid: {{ formSignUp.valid }}
+  </pre>
+
+  <button class="btn btn-secondary" (click)="setDefaultValues()">Cargar default</button>
+</section>

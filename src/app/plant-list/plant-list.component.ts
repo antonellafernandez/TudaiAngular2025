@@ -26,4 +26,10 @@ export class PlantListComponent {
     plant.stock -= plant.quantity;
     plant.quantity = 0;
   }
+
+  delete(plant: Plant): void {
+    this.plantDataService.deletePlant(plant.id).subscribe(() => {
+    this.plantDataService.getAll().subscribe(plants => this.plants = plants);
+    });
+  }
 }
