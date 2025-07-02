@@ -12,6 +12,7 @@ export class PlantDataService {
 
   constructor(private http: HttpClient) { }
 
+  // GET
   public getAll(): Observable<Plant[]> { // Consume REST API and return the obs in the response
     // fetch('url', {method: 'GET'})
     return this.http.get<Plant[]>(URL)
@@ -22,5 +23,10 @@ export class PlantDataService {
 
   public deletePlant(id: string): Observable<any> {
   return this.http.delete(`${URL}/${id}`);
+  }
+
+  // POST
+  public createPlant(plant: Plant): Observable<Plant> {
+    return this.http.post<Plant>(URL, plant);
   }
 }

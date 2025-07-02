@@ -1,0 +1,49 @@
+<h1>Add Plant</h1>
+
+<form [formGroup]="formPlant" (ngSubmit)="onSubmitPlant()" class="mt-4">
+  <div class="mb-2">
+    <label for="name">Name</label>
+    <input id="name" type="text" class="form-control" formControlName="name">
+    <div class="text-danger" *ngIf="formPlant.get('name')?.hasError('required')">Name required</div>
+  </div>
+
+  <div class="mb-2">
+    <label for="type">Type</label>
+    <input id="type" type="text" class="form-control" formControlName="type">
+    <div class="text-danger" *ngIf="formPlant.get('type')?.hasError('required')">Type required</div>
+  </div>
+
+  <div class="mb-2">
+    <label for="price">Price</label>
+    <input id="price" type="number" class="form-control" formControlName="price">
+    <div class="text-danger" *ngIf="formPlant.get('price')?.hasError('required')">Price required</div>
+    <div class="text-danger" *ngIf="formPlant.get('price')?.hasError('min')">Price must be 0 or bigger</div>
+  </div>
+
+  <div class="mb-2">
+    <label for="stock">Stock</label>
+    <input id="stock" type="number" class="form-control" formControlName="stock">
+    <div class="text-danger" *ngIf="formPlant.get('stock')?.hasError('required')">Stock required</div>
+    <div class="text-danger" *ngIf="formPlant.get('stock')?.hasError('min')">Stock must be 0 or bigger</div>
+  </div>
+
+  <div class="mb-2">
+    <label for="image">URL de Imagen</label>
+    <input id="image" type="text" class="form-control" formControlName="image">
+    <div class="text-danger" *ngIf="formPlant.get('image')?.hasError('required')">Image URL required</div>
+  </div>
+
+  <div class="form-check mb-2">
+    <input id="clearance" type="checkbox" class="form-check-input" formControlName="clearance">
+    <label for="clearance" class="form-check-label">Special Offer!</label>
+  </div>
+
+  <div class="mb-2">
+    <label for="quantity">Quantity</label>
+    <input id="quantity" type="number" class="form-control" formControlName="quantity">
+    <div class="text-danger" *ngIf="formPlant.get('quantity')?.hasError('required')">Quantity required</div>
+    <div class="text-danger" *ngIf="formPlant.get('quantity')?.hasError('min')">Quantity must be 0 or bigger</div>
+  </div>
+
+  <button class="btn btn-success mt-2" type="submit" [disabled]="formPlant.invalid">Add Plant</button>
+</form>

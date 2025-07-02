@@ -12,7 +12,7 @@ import { CartComponent } from './cart/cart.component';
 import { PlantsComponent } from './plants/plants.component';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { PlantFormComponent } from './plant-form/plant-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     CartComponent,
     PlantsComponent,
     InputIntegerComponent,
-    SignUpComponent
+    PlantFormComponent
   ],
   imports: [
     BrowserModule,
