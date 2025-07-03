@@ -1,13 +1,12 @@
 # LittleShopOfHorrors
 
+This project was created by Daniela Antonella Fernández; DNI 39.462.720; Email dafernandez{arroba}alumnos.exa.unicen.edu.ar; Sede Tandil.
+
 Little Shop of Horrors is a 1986 American horror comedy musical film directed by Frank Oz. The film centers on a floral shop worker who discovers a sentient carnivorous plant that feeds on human blood. This project imagines what the official website of that very shop might look like, bringing the eerie charm of the film into an interactive online shopping experience.
 
 <p align="center">
   <img src="public/assets/img/feed-me-seymour.gif" alt="Feed me, Seymour!" width="400"/>
 </p>
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10 by
-Daniela Antonella Fernández; DNI 39.462.720; Email dafernandez{arroba}alumnos.exa.unicen.edu.ar; Sede Tandil.
 
 ## Development server
 
