@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { PlantListComponent } from '../plant-list/plant-list.component';
 
 @Component({
   selector: 'app-plants',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './plants.component.scss'
 })
 export class PlantsComponent {
+  @ViewChild(PlantListComponent) plantListComponent!: PlantListComponent;
 
+  onFormSubmitted(): void {
+    this.plantListComponent.reloadPlants();
+  }
 }

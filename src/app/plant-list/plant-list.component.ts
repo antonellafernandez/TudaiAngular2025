@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Plant } from './plant';
 import { PlantCartService } from '../plant-cart.service';
 import { PlantDataService } from '../plant-data.service';
@@ -11,10 +12,12 @@ import { PlantDataService } from '../plant-data.service';
 })
 export class PlantListComponent {
   plants: Array<Plant> = [];
+  cartList$: Observable<Plant[]>; 
 
   constructor (
     private cart: PlantCartService,
     private plantDataService: PlantDataService) {
+      this.cartList$ = this.cart.cartList.asObservable();
   }
 
   ngOnInit(): void {
@@ -23,13 +26,18 @@ export class PlantListComponent {
 
   addToCart(plant: Plant): void {
     this.cart.addToCart(plant);
-    plant.stock -= plant.quantity;
     plant.quantity = 0;
   }
 
-  delete(plant: Plant): void {
-    this.plantDataService.deletePlant(plant.id).subscribe(() => {
-    this.plantDataService.getAll().subscribe(plants => this.plants = plants);
+  reloadPlants(): void {
+    this.plantDataService.getAll().subscribe({
+      next: (data) => this.plants = data,
+      error: (err) => console.error('Error loading plants', err)
     });
+  }
+
+  availableStock(plant: Plant, cartList: Plant[]): number {
+    const itemInCart = cartList.find(p => p.name === plant.name);
+    return plant.stock - (itemInCart ? itemInCart.quantity : 0);
   }
 }

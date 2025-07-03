@@ -16,11 +16,10 @@ export class PlantFormComponent {
   formPlant = new FormGroup({
     name: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
-    price: new FormControl(0, [Validators.required, Validators.min(0)]),
+    price: new FormControl(0.01, [Validators.required, Validators.min(0.01)]),
     stock: new FormControl(0, [Validators.required, Validators.min(0)]),
-    image: new FormControl('', [Validators.required]),
-    clearance: new FormControl(false),
-    quantity: new FormControl(0, [Validators.required, Validators.min(0)])
+    image: new FormControl("/assets/img/new-plant.webp"),
+    clearance: new FormControl(false)
   });
 
   constructor(private plantService: PlantDataService) {}
@@ -32,7 +31,8 @@ export class PlantFormComponent {
         this.plantService.createPlant(newPlant as Plant).subscribe({
           next: (createdPlant) => {
             console.log('Plant has been created:', createdPlant);
-            this.formPlant.reset({ clearance: false, quantity: 0 });
+            this.formPlant.reset({ clearance: false });
+            this.formSubmitted.emit();
           },
           error: (err) => {
             console.error('Error creating Plant:', err);

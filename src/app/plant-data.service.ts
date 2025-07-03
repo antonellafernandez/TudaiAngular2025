@@ -21,10 +21,6 @@ export class PlantDataService {
               ); 
   }
 
-  public deletePlant(id: string): Observable<any> {
-  return this.http.delete(`${URL}/${id}`);
-  }
-
   // POST
   public createPlant(plant: Plant): Observable<Plant> {
     return this.http.post<Plant>(URL, plant);
